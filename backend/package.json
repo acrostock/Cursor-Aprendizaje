@@ -1,0 +1,17 @@
+{
+  "name": "producto-digital-backend",
+  "version": "1.0.0",
+  "description": "API + SQLite para workflow de productos digitales",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "better-sqlite3": "^11.6.0",
+    "express": "^4.21.0"
+  }
+}

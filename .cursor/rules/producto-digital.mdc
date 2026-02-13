@@ -1,0 +1,25 @@
+---
+description: Stack, estructura y convenciones para productos digitales (backend, BBDD, scripts, integración)
+alwaysApply: true
+---
+
+# Proyecto: Productos digitales con Cursor
+
+## Stack
+- **Backend:** Node.js + Express
+- **Base de datos:** SQLite (better-sqlite3)
+- **Scripts de datos:** Node.js (descarga de APIs, ETL)
+- **Frontend (cuando aplique):** HTML/CSS/JS en carpeta frontend o en raíz
+
+## Estructura de carpetas
+- `backend/` — API, rutas, conexión a BBDD, lógica de negocio
+- `scripts/` — Scripts para descargar datos, migraciones manuales, ETL
+- `docs/` — Requisitos, workflow, integraciones, decisiones
+- `.cursor/rules/` — Reglas del proyecto (este archivo)
+
+## Convenciones
+- Comentarios y documentación en español
+- Variables de entorno para secrets (no hardcodear API keys)
+- Endpoints REST bajo `/api/` (ej: GET /api/items)
+- Migraciones o esquema SQL en `backend/` o `scripts/` según el proyecto
+- Al proponer cambios: mantener coherencia con esta estructura y sugerir tests o docs cuando sea relevante
