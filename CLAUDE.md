@@ -4,31 +4,55 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Educational Node.js project for learning AI-assisted development of digital products. Backend REST API with Express + SQLite and ETL scripts for external data ingestion.
+Educational Node.js project for learning AI-assisted development of digital products. Backend REST API with Express + SQLite, ETL scripts for external data ingestion, and a simple frontend app that consumes the API.
 
-## Commands
+## Using the Claude Code terminal
+
+Run these commands **in the Claude Code integrated terminal** (or any terminal with the project folder as current directory).
+
+**From project root (`Cursor-Aprendizaje`):**
 
 ```bash
-# Install dependencies
-cd backend && npm install
+# 1. Install backend dependencies (only needed once)
+cd backend
+npm install
+cd ..
+```
 
-# Start API server (runs on port 3000, configurable via PORT env var)
-cd backend && npm start
-
-# Seed database with sample data from JSONPlaceholder API (run from project root)
+```bash
+# 2. Seed the database with sample data (run whenever you want fresh data)
 node scripts/descargar-items.js
 ```
+
+```bash
+# 3. Start the server (API + frontend app)
+cd backend
+npm start
+```
+
+Then open in your browser: **http://localhost:3000** for the app, or **http://localhost:3000/api/items** for raw JSON.
+
+To stop the server: `Ctrl+C` in the terminal.
+
+## Commands summary
+
+| Goal | Command (from project root) |
+|------|------------------------------|
+| Install dependencies | `cd backend && npm install` |
+| Seed database | `node scripts/descargar-items.js` |
+| Start server (API + app) | `cd backend && npm start` |
 
 No test framework or linter is configured.
 
 ## Architecture
 
-- **`backend/`** — Express API server
-  - `server.js` — App entry point, mounts routes under `/api/`
-  - `db.js` — SQLite connection (better-sqlite3), creates `items` table on startup, exports the `db` instance
+- **`backend/`** — Express API server + static frontend
+  - `server.js` — App entry point, serves `public/` and mounts API routes under `/api/`
+  - `public/` — Frontend app: `index.html`, `styles.css`, `app.js` (fetches `/api/items` and renders list)
+  - `db.js` — SQLite via sql.js (initDb async, save() to persist to data.db), no native compilation
   - `routes/items.js` — REST endpoints for items (`GET /api/items`, `GET /api/items/:id`)
   - `data.db` — SQLite database file (gitignored, auto-created)
-- **`scripts/`** — ETL scripts that import `../backend/db` directly to write to the same database
+- **`scripts/`** — ETL scripts call initDb() from `../backend/db`, insert data, then save() to persist
 - **`docs/`** — Requirements (`requisitos.md`), workflow (`workflow.md`), integration notes
 
 Database schema has a single `items` table: `id`, `titulo`, `cuerpo`, `origen`, `creado_en`.

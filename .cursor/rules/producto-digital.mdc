@@ -7,7 +7,7 @@ alwaysApply: true
 
 ## Stack
 - **Backend:** Node.js + Express
-- **Base de datos:** SQLite (better-sqlite3)
+- **Base de datos:** SQLite (sql.js, sin compilación nativa)
 - **Scripts de datos:** Node.js (descarga de APIs, ETL)
 - **Frontend (cuando aplique):** HTML/CSS/JS en carpeta frontend o en raíz
 
@@ -23,3 +23,4 @@ alwaysApply: true
 - Endpoints REST bajo `/api/` (ej: GET /api/items)
 - Migraciones o esquema SQL en `backend/` o `scripts/` según el proyecto
 - Al proponer cambios: mantener coherencia con esta estructura y sugerir tests o docs cuando sea relevante
+- Al crear rutas nuevas, incluir un comentario con el método y la ruta (ej: // GET /api/items)

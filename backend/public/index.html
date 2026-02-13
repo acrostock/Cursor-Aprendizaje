@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Producto digital — Ítems</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>App — Producto digital</h1>
+    <p>Ítems cargados desde la API (backend + SQLite).</p>
+  </header>
+
+  <main>
+    <div class="widget-contador" id="widget-contador">
+      <span class="contador-numero" id="contador-total">—</span>
+      <span class="contador-label">ítems totales</span>
+    </div>
+
+    <section class="form-crear" aria-labelledby="titulo-form">
+      <h2 id="titulo-form">Crear ítem</h2>
+      <form id="form-item">
+        <label for="input-titulo">Título <span class="req">*</span></label>
+        <input type="text" id="input-titulo" name="titulo" required placeholder="Ej: Mi nueva tarea" maxlength="200" autocomplete="off">
+        <label for="input-cuerpo">Cuerpo (opcional)</label>
+        <textarea id="input-cuerpo" name="cuerpo" rows="3" placeholder="Descripción o notas…"></textarea>
+        <button type="submit">Crear ítem</button>
+      </form>
+      <p id="mensaje-form" class="mensaje-form" role="status" aria-live="polite"></p>
+    </section>
+
+    <section id="estado">Cargando ítems…</section>
+    <ul id="lista-items"></ul>
+  </main>
+
+  <footer>Cursor + Claude Code — Workflow productos digitales</footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

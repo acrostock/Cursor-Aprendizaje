@@ -14,16 +14,21 @@ Desde la **raíz del proyecto**:
 node scripts/descargar-items.js
 ```
 
-### 3. Arrancar la API
+### 3. Arrancar la API y la app
 ```bash
 cd backend
 npm start
 ```
-La API queda en http://localhost:3000
+O en desarrollo, con **reinicio automático** al guardar cambios:
+```bash
+cd backend
+npm run dev
+```
+- **App (frontend):** http://localhost:3000  
+- **API:** http://localhost:3000/api/health y http://localhost:3000/api/items  
 
-### 4. Probar endpoints
-- http://localhost:3000/api/health
-- http://localhost:3000/api/items
+### 4. Usar la terminal de Claude Code
+Si trabajas en Claude Code, usa su terminal integrada con los mismos comandos. Guía detallada: [terminal-claude-code.md](terminal-claude-code.md).
 
 ### 5. Iterar con Cursor
 - **Chat (Ctrl + L):** cambios en 1–2 archivos, preguntas, usar @backend o @scripts

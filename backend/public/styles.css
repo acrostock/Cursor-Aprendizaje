@@ -1,0 +1,166 @@
+/* App producto digital — estilos */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  color: #1a1a2e;
+  line-height: 1.5;
+}
+
+header {
+  border-bottom: 2px solid #1a1a2e;
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+header h1 {
+  margin: 0 0 0.25rem 0;
+  font-size: 1.5rem;
+}
+
+header p {
+  margin: 0;
+  color: #555;
+  font-size: 0.95rem;
+}
+
+.widget-contador {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: #1a1a2e;
+  color: #fff;
+  padding: 1rem 1.25rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+
+.contador-numero {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.contador-label {
+  font-size: 0.95rem;
+  opacity: 0.85;
+}
+
+.form-crear {
+  background: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.form-crear h2 {
+  margin: 0 0 1rem 0;
+  font-size: 1.1rem;
+}
+
+.form-crear label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.form-crear .req {
+  color: #c00;
+}
+
+.form-crear input,
+.form-crear textarea {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  font: inherit;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
+
+.form-crear textarea {
+  resize: vertical;
+  min-height: 4rem;
+}
+
+.form-crear button {
+  padding: 0.5rem 1rem;
+  font: inherit;
+  font-weight: 600;
+  background: #1a1a2e;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.form-crear button:hover {
+  background: #2d2d44;
+}
+
+.mensaje-form {
+  margin: 0.75rem 0 0 0;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.mensaje-form.error {
+  color: #c00;
+}
+
+#estado {
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+#lista-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#lista-items li {
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+  background: #f5f5f5;
+  border-radius: 8px;
+  border-left: 4px solid #1a1a2e;
+}
+
+#lista-items li h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1rem;
+}
+
+#lista-items li p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #444;
+}
+
+#lista-items li .origen {
+  font-size: 0.8rem;
+  color: #888;
+  margin-top: 0.5rem;
+}
+
+footer {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #ddd;
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.error {
+  color: #c00;
+}
