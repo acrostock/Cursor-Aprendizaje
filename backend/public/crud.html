@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestión de registros — CRUD</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Gestión de registros</h1>
+    <p>Crear, editar y eliminar ítems.</p>
+  </header>
+
+  <main>
+    <section class="form-crud" aria-labelledby="titulo-form-crud">
+      <h2 id="titulo-form-crud">Crear ítem</h2>
+      <form id="form-crud">
+        <input type="hidden" id="input-id">
+        <label for="crud-titulo">Título <span class="req">*</span></label>
+        <input type="text" id="crud-titulo" name="titulo" required placeholder="Ej: Mi nueva tarea" maxlength="200" autocomplete="off">
+        <label for="crud-cuerpo">Cuerpo (opcional)</label>
+        <textarea id="crud-cuerpo" name="cuerpo" rows="3" placeholder="Descripción o notas…"></textarea>
+        <div class="form-acciones">
+          <button type="submit" id="btn-guardar">Crear ítem</button>
+          <button type="button" id="btn-cancelar" class="btn-secundario" hidden>Cancelar</button>
+        </div>
+      </form>
+      <p id="mensaje-crud" class="mensaje-form" role="status" aria-live="polite"></p>
+    </section>
+
+    <section class="tabla-crud">
+      <table id="tabla-items">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Título</th>
+            <th>Origen</th>
+            <th>Creado</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="cuerpo-tabla"></tbody>
+      </table>
+      <p id="estado-tabla" class="estado-tabla">Cargando ítems…</p>
+    </section>
+  </main>
+
+  <!-- Modal de confirmación -->
+  <div id="modal-eliminar" class="modal-overlay" hidden>
+    <div class="modal">
+      <p>¿Eliminar este ítem? Esta acción no se puede deshacer.</p>
+      <div class="modal-acciones">
+        <button id="btn-confirmar-eliminar" class="btn-peligro">Eliminar</button>
+        <button id="btn-cancelar-eliminar" class="btn-secundario">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>Cursor + Claude Code — Workflow productos digitales</footer>
+
+  <script src="common.js"></script>
+  <script src="sidebar.js"></script>
+  <script src="crud.js"></script>
+</body>
+</html>

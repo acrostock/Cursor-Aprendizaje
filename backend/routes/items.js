@@ -79,6 +79,60 @@ function createRouter(db, save) {
     }
   });
 
+  // PUT /api/items/:id — actualizar título y cuerpo
+  router.put('/:id', (req, res) => {
+    try {
+      const { titulo, cuerpo } = req.body || {};
+      if (!titulo || typeof titulo !== 'string' || !titulo.trim()) {
+        return res.status(400).json({ error: 'titulo es obligatorio' });
+      }
+      const existing = execToObjects(
+        db,
+        'SELECT id FROM items WHERE id = ?',
+        [req.params.id]
+      );
+      if (existing.length === 0) return res.status(404).json({ error: 'No encontrado' });
+
+      const stmt = db.prepare(
+        'UPDATE items SET titulo = ?, cuerpo = ? WHERE id = ?',
+        [titulo.trim(), String(cuerpo || '').trim(), req.params.id]
+      );
+      stmt.run();
+      stmt.free();
+      save();
+
+      const rows = execToObjects(
+        db,
+        'SELECT id, titulo, cuerpo, origen, creado_en FROM items WHERE id = ?',
+        [req.params.id]
+      );
+      res.json(rows[0]);
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+
+  // DELETE /api/items/:id — eliminar ítem
+  router.delete('/:id', (req, res) => {
+    try {
+      const existing = execToObjects(
+        db,
+        'SELECT id FROM items WHERE id = ?',
+        [req.params.id]
+      );
+      if (existing.length === 0) return res.status(404).json({ error: 'No encontrado' });
+
+      const stmt = db.prepare('DELETE FROM items WHERE id = ?', [req.params.id]);
+      stmt.run();
+      stmt.free();
+      save();
+
+      res.json({ mensaje: 'Ítem eliminado' });
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+
   return router;
 }
 

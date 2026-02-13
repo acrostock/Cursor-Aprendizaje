@@ -46,12 +46,6 @@ async function cargarItems() {
   }
 }
 
-function escaparHtml(texto) {
-  const div = document.createElement('div');
-  div.textContent = texto;
-  return div.innerHTML;
-}
-
 function renderItem(item) {
   const cuerpo = item.cuerpo || '';
   return `

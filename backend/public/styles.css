@@ -6,11 +6,61 @@
 
 body {
   font-family: system-ui, -apple-system, sans-serif;
-  max-width: 720px;
-  margin: 0 auto;
-  padding: 1.5rem;
+  display: flex;
+  margin: 0;
+  min-height: 100vh;
   color: #1a1a2e;
   line-height: 1.5;
+}
+
+/* === Sidebar === */
+
+.sidebar {
+  width: 220px;
+  flex-shrink: 0;
+  background: #1a1a2e;
+  color: #fff;
+  padding: 1.25rem 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-titulo {
+  padding: 0 1.25rem 1rem;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0.6;
+}
+
+.sidebar-link {
+  display: block;
+  padding: 0.6rem 1.25rem;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: background 0.15s, color 0.15s;
+}
+
+.sidebar-link:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.sidebar-link.activa {
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  font-weight: 600;
+  border-left: 3px solid #fff;
+}
+
+/* === Contenido principal === */
+
+.contenido-principal {
+  flex: 1;
+  max-width: 800px;
+  padding: 1.5rem 2rem;
 }
 
 header {
@@ -29,6 +79,8 @@ header p {
   color: #555;
   font-size: 0.95rem;
 }
+
+/* === Widget contador === */
 
 .widget-contador {
   display: flex;
@@ -52,7 +104,10 @@ header p {
   opacity: 0.85;
 }
 
-.form-crear {
+/* === Formularios (crear en Home y CRUD) === */
+
+.form-crear,
+.form-crud {
   background: #f9f9f9;
   border: 1px solid #e0e0e0;
   border-radius: 8px;
@@ -60,24 +115,29 @@ header p {
   margin-bottom: 1.5rem;
 }
 
-.form-crear h2 {
+.form-crear h2,
+.form-crud h2 {
   margin: 0 0 1rem 0;
   font-size: 1.1rem;
 }
 
-.form-crear label {
+.form-crear label,
+.form-crud label {
   display: block;
   font-size: 0.9rem;
   font-weight: 600;
   margin-bottom: 0.25rem;
 }
 
-.form-crear .req {
+.form-crear .req,
+.form-crud .req {
   color: #c00;
 }
 
 .form-crear input,
-.form-crear textarea {
+.form-crear textarea,
+.form-crud input[type="text"],
+.form-crud textarea {
   width: 100%;
   padding: 0.5rem 0.75rem;
   font: inherit;
@@ -86,12 +146,14 @@ header p {
   margin-bottom: 1rem;
 }
 
-.form-crear textarea {
+.form-crear textarea,
+.form-crud textarea {
   resize: vertical;
   min-height: 4rem;
 }
 
-.form-crear button {
+.form-crear button,
+.form-crud button[type="submit"] {
   padding: 0.5rem 1rem;
   font: inherit;
   font-weight: 600;
@@ -102,8 +164,15 @@ header p {
   cursor: pointer;
 }
 
-.form-crear button:hover {
+.form-crear button:hover,
+.form-crud button[type="submit"]:hover {
   background: #2d2d44;
+}
+
+.form-acciones {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
 }
 
 .mensaje-form {
@@ -115,6 +184,8 @@ header p {
 .mensaje-form.error {
   color: #c00;
 }
+
+/* === Lista Home === */
 
 #estado {
   margin-bottom: 1rem;
@@ -153,6 +224,156 @@ header p {
   margin-top: 0.5rem;
 }
 
+/* === Tabla CRUD === */
+
+.tabla-crud {
+  margin-bottom: 1.5rem;
+}
+
+.estado-tabla {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0.5rem 0;
+}
+
+#tabla-items {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+#tabla-items th,
+#tabla-items td {
+  padding: 0.6rem 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+#tabla-items thead th {
+  background: #f5f5f5;
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: #555;
+}
+
+#tabla-items tbody tr:hover {
+  background: #f9f9f9;
+}
+
+.celda-acciones {
+  white-space: nowrap;
+  display: flex;
+  gap: 0.35rem;
+}
+
+.celda-vacia {
+  text-align: center;
+  color: #888;
+  padding: 2rem 0.75rem;
+}
+
+/* === Botones === */
+
+.btn-editar {
+  padding: 0.3rem 0.6rem;
+  font: inherit;
+  font-size: 0.8rem;
+  background: #1a1a2e;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-editar:hover {
+  background: #2d2d44;
+}
+
+.btn-eliminar {
+  padding: 0.3rem 0.6rem;
+  font: inherit;
+  font-size: 0.8rem;
+  background: #c00;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-eliminar:hover {
+  background: #a00;
+}
+
+.btn-peligro {
+  padding: 0.5rem 1rem;
+  font: inherit;
+  font-weight: 600;
+  background: #c00;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btn-peligro:hover {
+  background: #a00;
+}
+
+.btn-secundario {
+  padding: 0.5rem 1rem;
+  font: inherit;
+  font-weight: 600;
+  background: #e0e0e0;
+  color: #333;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btn-secundario:hover {
+  background: #ccc;
+}
+
+/* === Modal === */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.modal-overlay[hidden] {
+  display: none;
+}
+
+.modal {
+  background: #fff;
+  border-radius: 8px;
+  padding: 1.5rem;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.modal p {
+  margin: 0 0 1.25rem 0;
+  font-size: 0.95rem;
+}
+
+.modal-acciones {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-end;
+}
+
+/* === Footer === */
+
 footer {
   margin-top: 2rem;
   padding-top: 1rem;
@@ -163,4 +384,207 @@ footer {
 
 .error {
   color: #c00;
+}
+
+/* === Documentación === */
+
+.docs-seccion {
+  background: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.docs-seccion h2 {
+  margin: 0 0 0.75rem 0;
+  font-size: 1.15rem;
+  border-bottom: 2px solid #1a1a2e;
+  padding-bottom: 0.5rem;
+}
+
+.docs-seccion h3 {
+  margin: 1rem 0 0.5rem 0;
+  font-size: 1rem;
+}
+
+.docs-seccion p {
+  margin: 0 0 0.5rem 0;
+  font-size: 0.93rem;
+  color: #333;
+}
+
+.docs-seccion ul {
+  margin: 0 0 0.5rem 0;
+  padding-left: 1.5rem;
+  font-size: 0.93rem;
+  color: #333;
+}
+
+.docs-seccion ul li {
+  margin-bottom: 0.35rem;
+}
+
+.docs-seccion code {
+  background: #e8e8e8;
+  padding: 0.1rem 0.4rem;
+  border-radius: 3px;
+  font-size: 0.88rem;
+}
+
+.docs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+}
+
+.docs-card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 0.85rem;
+}
+
+.docs-card strong {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-size: 0.95rem;
+}
+
+.docs-card p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.docs-estado {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.estado-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.estado-dot.cargando {
+  background: #999;
+  animation: pulso 1s infinite;
+}
+
+.estado-dot.activo {
+  background: #22c55e;
+  animation: pulso 2s infinite;
+}
+
+.estado-dot.error {
+  background: #c00;
+}
+
+@keyframes pulso {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.docs-tabla-wrapper {
+  overflow-x: auto;
+}
+
+.docs-tabla {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+
+.docs-tabla th,
+.docs-tabla td {
+  padding: 0.5rem 0.7rem;
+  text-align: left;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.docs-tabla thead th {
+  background: #eee;
+  font-weight: 600;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: #555;
+}
+
+.docs-tabla tbody tr:hover {
+  background: #f0f0f0;
+}
+
+.metodo {
+  display: inline-block;
+  padding: 0.15rem 0.45rem;
+  border-radius: 3px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.metodo.get { background: #22c55e; }
+.metodo.post { background: #3b82f6; }
+.metodo.put { background: #f59e0b; }
+.metodo.delete { background: #c00; }
+
+.docs-arbol pre,
+.docs-diagrama pre {
+  background: #1a1a2e;
+  color: #e0e0e0;
+  padding: 1rem;
+  border-radius: 6px;
+  overflow-x: auto;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* === Responsive === */
+
+@media (max-width: 768px) {
+  body {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    flex-direction: row;
+    padding: 0;
+    overflow-x: auto;
+  }
+
+  .sidebar-titulo {
+    display: none;
+  }
+
+  .sidebar-link {
+    padding: 0.75rem 1rem;
+    white-space: nowrap;
+    font-size: 0.9rem;
+  }
+
+  .sidebar-link.activa {
+    border-left: none;
+    border-bottom: 3px solid #fff;
+  }
+
+  .contenido-principal {
+    padding: 1rem;
+  }
+
+  #tabla-items th,
+  #tabla-items td {
+    padding: 0.4rem 0.5rem;
+    font-size: 0.8rem;
+  }
+
+  .docs-grid {
+    grid-template-columns: 1fr;
+  }
 }
